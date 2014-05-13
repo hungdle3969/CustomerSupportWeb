@@ -1,0 +1,2 @@
+<%@ page import="com.hung.le.pojo.Ticket, com.hung.le.pojo.Attachment" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
