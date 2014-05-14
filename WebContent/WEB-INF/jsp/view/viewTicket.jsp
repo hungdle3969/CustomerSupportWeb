@@ -14,27 +14,20 @@
 </head>
 <body>
 	<a href="<c:url value="/login?logout"></c:url>">Logout</a>
-	<h2>Ticket #${ticketId}: ${ticket.subject}</h2>
+	<h2>Ticket #${ticketId}: <c:out value="${ticket.subject}" /></h2>
 	<i>Customer Name - ${ticket.customerName}</i><br /><br />
-	<%= ticket.getBody() %><br /><br />
-	<%
-		if(ticket.getNumberOfAttachments() > 0){
-			 %>Attachments: <%
-				int i = 0;
-				for(Attachment a : ticket.getAttachments())
-				{
-					if(i++ > 0){
-						out.print(", ");
-					}
-					%><a href="<c:url value="/tickets">
-						<c:param name="action" value="download" />
-						<c:param name="ticketId" value="{ticketId}" />
-						<c:param name="attachment" value="<%= a.getName() %>" />
-					</c:url>"><%= a.getName() %></a><%
-				}
-				%><br /><br /><%
-		}
-	%>
+	<c:out value="${ticket.body}" />
+	<c:if test="${ticket.numberOfAttachments > 0}">
+		Attachments:
+		<c:forEach items="${ticket.attachments}" var="attachment" varStatus="status">
+			<c:if test="${!status.fisrt}">, </c:if>
+			<a href="<c:url value="/tickets">
+				<c:param name="action" value="download" />
+				<c:param name="ticketId" value="{ticketId}" />
+				<c:param name="attachment" value="${attachment.name}" />
+			</c:url>"><c:out value="${attachment.name}"></c:out></a>
+		</c:forEach><br /><br />
+	</c:if>
 	<a href="<c:url value="/tickets"></c:url>">Return to list tickets</a>
 </body>
 </html>
