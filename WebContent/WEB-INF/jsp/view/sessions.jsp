@@ -1,3 +1,4 @@
+<%--elvariable id="numberOfSessions" type="java.lang.Integer" --%>
 <%@ page import="java.util.List" %>
 
 <%!
@@ -26,7 +27,7 @@
 <body>
 	<a href="<c:url value="/login?logout"></c:url>">Logout</a>
 	<h2>Sessions</h2>
-	There are a total of <%= numberOfSessions %> active sessions in this application.<br /><br />
+	There are a total of ${numberOfSessions} active sessions in this application.<br /><br />
 	<%
 		long timestamp = System.currentTimeMillis();
 		for(HttpSession aSession : sessions){

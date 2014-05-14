@@ -1,7 +1,9 @@
 <%@ page session="false" %>
+<%--@elvariable id="ticketId" type="java.lang.String" --%>
+<%--@elvarialbe id="ticket" type="com.hung.le.pojo.Ticket --%>
 
 <%
-	String ticketId = (String) request.getAttribute("ticketId");
+	//String ticketId = (String) request.getAttribute("ticketId");
 	Ticket ticket = (Ticket) request.getAttribute("ticket");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -12,8 +14,8 @@
 </head>
 <body>
 	<a href="<c:url value="/login?logout"></c:url>">Logout</a>
-	<h2>Ticket #<%= ticketId %>: <%= ticket.getSubject() %></h2>
-	<i>Customer Name - <%= ticket.getCustomerName() %></i><br /><br />
+	<h2>Ticket #${ticketId}: ${ticket.subject}</h2>
+	<i>Customer Name - ${ticket.customerName}</i><br /><br />
 	<%= ticket.getBody() %><br /><br />
 	<%
 		if(ticket.getNumberOfAttachments() > 0){
@@ -26,7 +28,7 @@
 					}
 					%><a href="<c:url value="/tickets">
 						<c:param name="action" value="download" />
-						<c:param name="ticketId" value="<%= ticketId %>" />
+						<c:param name="ticketId" value="{ticketId}" />
 						<c:param name="attachment" value="<%= a.getName() %>" />
 					</c:url>"><%= a.getName() %></a><%
 				}
