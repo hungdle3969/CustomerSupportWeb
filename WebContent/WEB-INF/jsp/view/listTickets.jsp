@@ -1,17 +1,6 @@
 <%--@elvariable id="ticketDatabase" type="java.util.Map<Integer, com.hung.le.pojo.Ticket" --%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Customer Support</title>
-</head>
-<body>
-	<a href="<c:url value="/login?logout"></c:url>">Logout</a>
-	<h2>Tickets</h2>
-	<a href="<c:url value="/tickets">
-		<c:param name="action" value="create" />
-	</c:url>">Create Ticket</a><br /><br />
+<template:basic htmlTitle="Tickets" bodyTitle="Tickets">
 	<c:choose>
 		<c:when test="${fn:length(ticketDatabase) == 0}">
 			<i>There are no tickets in the system.</i>
@@ -26,5 +15,4 @@
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
-</body>
-</html>
+</template:basic>

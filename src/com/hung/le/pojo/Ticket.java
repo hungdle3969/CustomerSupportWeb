@@ -1,5 +1,6 @@
 package com.hung.le.pojo;
 
+import java.time.Instant;
 import java.util.Collection;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -10,8 +11,15 @@ public class Ticket {
 	private String subject;
 	private String body;
 	private Map<String, Attachment> attachments = new LinkedHashMap<>();
+	private Instant dateCreated;
 	
 	
+	public Instant getDateCreated() {
+		return dateCreated;
+	}
+	public void setDateCreated(Instant dateCreated) {
+		this.dateCreated = dateCreated;
+	}
 	public String getCustomerName() {
 		return customerName;
 	}

@@ -3,6 +3,7 @@ package com.hung.le.servlet;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.time.Instant;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -178,6 +179,7 @@ public class TicketServlet extends HttpServlet{
 		ticket.setCustomerName((String) req.getSession().getAttribute("username"));
 		ticket.setSubject(req.getParameter("subject"));
 		ticket.setBody(req.getParameter("body"));
+		ticket.setDateCreated(Instant.now());
 		
 		Part filePart = req.getPart("file1");
 		
