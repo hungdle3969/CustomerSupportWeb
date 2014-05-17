@@ -32,11 +32,6 @@ public class TicketServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		if(req.getSession().getAttribute("username") == null){ //user is not logged in
-			resp.sendRedirect("login");
-			return;
-		}
-		
 		String action = req.getParameter("action");
 		
 		if(action == null){
@@ -63,11 +58,6 @@ public class TicketServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 
-		if(req.getSession().getAttribute("username") == null){ //user is not logged in
-			resp.sendRedirect("login");
-			return;
-		}
-		
 		String action = req.getParameter("action");
 		
 		if(action == null){
