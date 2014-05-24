@@ -14,27 +14,42 @@
 			<file-size-threshold>5242880</file-size-threshold>
 		</multipart-config>
 	</servlet>
-	<servlet>
-		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>com.hung.le.servlet.LoginServlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>SessionListServlet</servlet-name>
-		<servlet-class>com.hung.le.servlet.SessionListServlet</servlet-class>
-	</servlet>
-	
 	<servlet-mapping>
 		<servlet-name>TicketServlet</servlet-name>
 		<url-pattern>/tickets</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LoginServlet</servlet-name>
+		<servlet-class>com.hung.le.servlet.LoginServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SessionListServlet</servlet-name>
+		<servlet-class>com.hung.le.servlet.SessionListServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>SessionListServlet</servlet-name>
 		<url-pattern>/sessions</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ChatServlet</servlet-name>
+		<servlet-class>com.hung.le.servlet.ChatServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ChatServlet</servlet-name>
+		<url-pattern>/chat</url-pattern>
+	</servlet-mapping>
+	
+	<context-param>
+	    <param-name>log4jConfiguration</param-name>
+	    <param-value>log4j2.xml</param-value>
+	</context-param>
 	
 	<jsp-config>
 		<jsp-property-group>

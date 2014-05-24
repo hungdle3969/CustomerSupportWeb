@@ -13,12 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /**
  * @author admin
  *
  */
 public class LoginServlet extends HttpServlet{
 
+	private static final Logger log = LogManager.getLogger();
 	private static final Map<String, String> userDatabase = new Hashtable<>();
 	
 	static {
@@ -38,6 +42,10 @@ public class LoginServlet extends HttpServlet{
 		
 		//when the logout is not null it means the user already logged out -> provide them the login page
 		if(req.getParameter("logout") != null){
+			
+			if(log.isDebugEnabled())
+				log.debug("User {} logged out.", session.getAttribute("username"));
+			
 			session.invalidate(); // log user out
 			resp.sendRedirect("login");
 			return;
@@ -70,10 +78,12 @@ public class LoginServlet extends HttpServlet{
 		//if username and password are invalid, forward the login page to user
 		if(username == null || password == null || 
 				!LoginServlet.userDatabase.containsKey(username) || !password.equals(LoginServlet.userDatabase.get(username))){
+			log.warn("Login failed for user {}.", username);
 			req.setAttribute("loginFailed", true);
 			req.getRequestDispatcher("/WEB-INF/jsp/view/login.jsp").forward(req, resp);
 		}
 		else{//after successfully login, set value for username attribute and allow them to access ticket page
+			log.info("User {} successfully logged in.", username);
 			session.setAttribute("username", username);
 			req.changeSessionId();	// new feature in servlet 3.1 from EE7 that protects against the session fixation attacks
 			resp.sendRedirect("tickets");

@@ -1,6 +1,6 @@
 <template:basic htmlTitle="Create a Ticket" bodyTitle="Create a Ticket">
 	<form method="post" action="tickets" enctype="multipart/form-data">
-		<input type="hidden" name="action" value="create" />
+		<input type="hidden" name="action" value="createssss" />
 		<!-- don't need this input anymore since we can get it from session
 		Your Name<br/>
 		<input type="text" name="customerName"><br/><br/>
